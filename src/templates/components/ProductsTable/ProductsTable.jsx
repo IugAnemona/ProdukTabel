@@ -1,16 +1,20 @@
 import { BsFillTrashFill } from "react-icons/bs";
 import AddProduct from "../AddProduct/AddProduct";
+import productsData from "../../Api/ApiData";
+import { useEffect, useState } from "react";
 
 const ProductsTable = () => {
-  const products = [
-    {
-      id: 1,
-      name: "Notebook i7 8GB Branco",
-      quantity: 3,
-      price: 2999.0,
-    },
-    { id: 2, name: "Notebook i7 8GB Preto", quantity: 5, price: 2999.0 },
-  ];
+  const [products, setProducts] = useState(null);
+
+  async function aaa() {
+    const products = await productsData();
+    setProducts(products);
+    console.log("oi");
+  }
+
+  useEffect(() => {
+    aaa();
+  }, []);
 
   return (
     <div className="rounded-xl container overflow-auto bg-aliceblue py-10">
@@ -31,31 +35,38 @@ const ProductsTable = () => {
               <div className="table-cell text-left font-medium p-2 pl-8 pt-0 pb-3 text-powderblue"></div>
             </div>
           </div>
-          {products.map((p) => (
-            <div key={p.id} className="table-row-group bg-slate-50">
-              <div className="table-row">
-                <div className="table-cell border-b border-slate-100 p-4 pl-8 lg:p-14 lg:pl-8 text-davysgray">
-                  {p.name}
-                </div>
-                <div className="table-cell border-b border-slate-100 p-4 pl-8 lg:p-14 lg:pl-8 text-davysgray">
-                  {p.quantity}{" "}
-                  <a className="mx-2 text-lg font-bold text-green-400" href="#">
-                    +
-                  </a>
-                  |
-                  <a className="mx-2 text-lg font-bold text-red-400" href="#">
-                    -
-                  </a>
-                </div>
-                <div className="table-cell border-b border-slate-100 p-4 pl-8 lg:p-14 lg:pl-8 text-slate-500">
-                  {p.price}
-                </div>
-                <div className="table-cell border-b border-slate-100 p-4 pl-8 lg:p-14 lg:pl-8 text-slate-500 text-lg">
-                  <BsFillTrashFill className="hover:scale-125 cursor-pointer" />
+          {products ? (
+            products.map((p) => (
+              <div key={p.id} className="table-row-group bg-slate-50">
+                <div className="table-row">
+                  <div className="table-cell border-b border-slate-100 p-4 pl-8 lg:p-14 lg:pl-8 text-davysgray">
+                    {p.nome_produto}
+                  </div>
+                  <div className="table-cell border-b border-slate-100 p-4 pl-8 lg:p-14 lg:pl-8 text-davysgray">
+                    {p.quantidade}
+                    <a
+                      className="mx-2 text-lg font-bold text-green-400"
+                      href="#"
+                    >
+                      +
+                    </a>
+                    |
+                    <a className="mx-2 text-lg font-bold text-red-400" href="#">
+                      -
+                    </a>
+                  </div>
+                  <div className="table-cell border-b border-slate-100 p-4 pl-8 lg:p-14 lg:pl-8 text-slate-500">
+                    {p.valor}
+                  </div>
+                  <div className="table-cell border-b border-slate-100 p-4 pl-8 lg:p-14 lg:pl-8 text-slate-500 text-lg">
+                    <BsFillTrashFill className="hover:scale-125 cursor-pointer" />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <h1>loading...</h1>
+          )}
         </div>
       </div>
     </div>

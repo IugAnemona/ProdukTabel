@@ -1,5 +1,5 @@
-import Button from "../Button/Button";
 import InputSearch from "../InputSearch/InputSearch";
+import ProductForm from "../ProductForm/ProductForm";
 
 const AddProduct = () => {
   return (
@@ -8,7 +8,7 @@ const AddProduct = () => {
         <InputSearch />
       </div>
       <div className="">
-        <Button />
+        <ProductForm />
       </div>
     </section>
   );

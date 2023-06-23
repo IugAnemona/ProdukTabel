@@ -10,7 +10,7 @@ export function Header() {
 
   return (
     <header>
-      <div className=" relative text-slate-100 bg-powderblue border-b border-slate-300 w-full px-3 py-2">
+      <div className="text-slate-100 bg-powderblue border-b border-slate-300 w-full px-3 py-2">
         <div className="container flex items-center mx-auto">
           <div>
             <a
