@@ -29,15 +29,14 @@ export const createProduct = async (data) => {
       throw new Error("Ocorreu um erro");
     }
     const responseData = await response.json();
-    console.log(responseData);
     return responseData;
   } catch (error) {
     console.error.error;
   }
 };
-export const updateProduct = async (data) => {
+export const updateProduct = async (data, id) => {
   try {
-    const response = await fetch(MUTATE_PRODUCT_URL, {
+    const response = await fetch(`${MUTATE_PRODUCT_URL}${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +48,6 @@ export const updateProduct = async (data) => {
       throw new Error("Ocorreu um erro");
     }
     const responseData = await response.json();
-    console.log(responseData);
     return responseData;
   } catch (error) {
     console.error.error;

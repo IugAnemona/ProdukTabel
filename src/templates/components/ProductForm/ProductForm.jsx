@@ -4,8 +4,10 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
 import { TableContext } from "../contexts/TableContext";
 import { getProducts, createProduct } from "../../Api/products";
+import { BsPencilSquare } from "react-icons/bs";
+import PropTypes from "prop-types";
 
-const ProductForm = () => {
+const ProductForm = (props) => {
   const { setProducts } = useContext(TableContext);
   const addNew = {};
 
@@ -22,19 +24,30 @@ const ProductForm = () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button className="px-2 py-2 md:px-4 md:py-2 text-slate-700  bg-emerald hover:bg-green-500 rounded-md font-bold text-base md:text-xl  cursor-pointer active:bg-seagreen active:text-slate-200">
-          <AiOutlinePlus className="inline pb-1 text-2xl" />{" "}
-          <div className="hidden md:inline">Produto</div>
-        </button>
+        {props.type === "edit" ? (
+          <button className="text-violet11 hover:bg-mauve3 mr-4 shadow-blackA7 inline-flex p-1 items-center justify-center rounded-[4px] bg-white font-medium leading-none shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black">
+            <BsPencilSquare
+              // onClick={() => deleteP(p.id)}
+              className="hover:scale-125 cursor-pointer"
+            />
+          </button>
+        ) : (
+          <button className="px-2 py-2 md:px-4 md:py-2 text-slate-700  bg-emerald hover:bg-green-500 rounded-md font-bold text-base md:text-xl  cursor-pointer active:bg-seagreen active:text-slate-200">
+            <AiOutlinePlus className="inline pb-1 text-2xl" />
+            <div className="hidden md:inline">Produto</div>
+          </button>
+        )}
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed " />
         <Dialog.Content className="text-slate-700 bg-powderblue rounded-md shadow-2xl fixed top-2/4 left-2/4 -translate-y-1/2 -translate-x-1/2 w-11/12 max-w-md max-h-[85vh] p-6">
           <Dialog.Title className="m-0 font-medium text-lg ">
-            Novo Produto
+            {props.type !== "edit" ? "Novo Produto" : "Editar Produto"}
           </Dialog.Title>
           <Dialog.Description className="mt-2 mb-5 text-base">
-            Adicione um novo produto
+            {props.type !== "edit"
+              ? "Adicione um novo produto."
+              : "Edite o produto escolhido."}
           </Dialog.Description>
           <fieldset className="flex gap-5 items-center mb-4">
             <label className="text-base w-[90px] text-right" htmlFor="name">
@@ -47,24 +60,24 @@ const ProductForm = () => {
             />
           </fieldset>
           <fieldset className="flex gap-5 items-center mb-4">
-            <label className="text-base w-[90px] text-right" htmlFor="username">
+            <label className="text-base w-[90px] text-right" htmlFor="quantity">
               Quantidade
             </label>
             <input
               onChange={(e) => (addNew.quantidade = Number(e.target.value))}
               className="p-2 border-2 outline-0 border-border max-w-xl w-full flex-1 shadow-sm rounded-md text-base focus:border-focus focus:shadow-sm text-text"
-              id="username"
+              id="quantity"
               type="Number"
             />
           </fieldset>
           <fieldset className="flex gap-5 items-center mb-4">
-            <label className="text-base w-[90px] text-right" htmlFor="username">
+            <label className="text-base w-[90px] text-right" htmlFor="price">
               Preço
             </label>
             <input
               onChange={(e) => (addNew.valor = Number(e.target.value))}
               className="p-2 border-2 outline-0 border-border max-w-xl w-full flex-1 shadow-sm rounded-md text-base focus:border-focus focus:shadow-sm text-text"
-              id="username"
+              id="price"
               type="Number"
             />
           </fieldset>
@@ -76,12 +89,21 @@ const ProductForm = () => {
             }}
           >
             <Dialog.Close asChild>
-              <button
-                onClick={postNewProduct}
-                className="inline-flex items-center justify-center rounded py-0 px-4 text-base font-medium h-9 bg-aliceblue text-davysgray hover:bg-blue-200"
-              >
-                Adicionar
-              </button>
+              {props.type !== "edit" ? (
+                <button
+                  onClick={postNewProduct}
+                  className="inline-flex items-center justify-center rounded py-0 px-4 text-base font-medium h-9 bg-aliceblue text-davysgray hover:bg-blue-200"
+                >
+                  Adicionar
+                </button>
+              ) : (
+                <button
+                  onClick={() => props.update(addNew, props.id)}
+                  className="inline-flex items-center justify-center rounded py-0 px-4 text-base font-medium h-9 bg-aliceblue text-davysgray hover:bg-blue-200"
+                >
+                  Salvar
+                </button>
+              )}
             </Dialog.Close>
           </div>
           <Dialog.Close asChild>
@@ -96,6 +118,12 @@ const ProductForm = () => {
       </Dialog.Portal>
     </Dialog.Root>
   );
+};
+
+ProductForm.propTypes = {
+  type: PropTypes.string,
+  update: PropTypes.func,
+  id: PropTypes.number,
 };
 
 export default ProductForm;
