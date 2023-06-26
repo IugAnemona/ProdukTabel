@@ -25,14 +25,14 @@ const ProductForm = (props) => {
     <Dialog.Root>
       <Dialog.Trigger asChild>
         {props.type === "edit" ? (
-          <button className="text-violet11 hover:bg-mauve3 mr-4 shadow-blackA7 inline-flex p-1 items-center justify-center rounded-[4px] bg-white font-medium leading-none shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black">
+          <button className="text-violet11 hover:bg-mauve3 mr-4 shadow-blackA7 inline-flex p-1 items-center justify-center rounded-[4px] bg-white font-medium leading-none shadow-[0_2px_10px] outline-none">
             <BsPencilSquare
               // onClick={() => deleteP(p.id)}
               className="hover:scale-125 cursor-pointer"
             />
           </button>
         ) : (
-          <button className="px-2 py-2 md:px-4 md:py-2 text-slate-700  bg-emerald hover:bg-green-500 rounded-md font-bold text-base md:text-xl  cursor-pointer active:bg-seagreen active:text-slate-200">
+          <button className="px-2 py-2 md:px-4 md:py-2 text-white  bg-emerald hover:bg-green-500 rounded-md font-bold text-base md:text-xl  cursor-pointer active:bg-seagreen active:text-davysgray">
             <AiOutlinePlus className="inline pb-1 text-2xl" />
             <div className="hidden md:inline">Produto</div>
           </button>

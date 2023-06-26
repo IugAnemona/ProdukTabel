@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { TableContext } from "../contexts/TableContext";
 import { deleteProduct, getProducts, updateProduct } from "../../Api/products/";
 import { CgSpinner } from "react-icons/cg";
+import { GoDash, GoPlus } from "react-icons/go";
 
 import Alert from "../AlertDialog/Alert";
 import ProductForm from "../ProductForm/ProductForm";
@@ -64,19 +65,30 @@ const ProductsTable = () => {
                     </div>
                     <div className="table-cell border-b border-slate-100 p-4 pl-8  text-davysgray">
                       {p.quantidade}
-                      <a
-                        className="mx-2 text-lg font-bold text-green-400"
-                        href="#"
-                      >
-                        +
-                      </a>
-                      |
-                      <a
-                        className="mx-2 text-lg font-bold text-red-400"
-                        href="#"
-                      >
-                        -
-                      </a>
+                      <div className="inline-flex items-center w-2/3 justify-end">
+                        <button className="text-violet11 hover:bg-mauve3 mr-2  shadow-blackA7 inline-flex items-center justify-center rounded-[4px] bg-white font-medium leading-none shadow-[0_2px_10px] outline-none">
+                          <GoPlus
+                            onClick={() =>
+                              updateP({ quantidade: p.quantidade + 1 }, p.id)
+                            }
+                            className="hover:scale-125 cursor-pointer"
+                          />
+                        </button>
+                        |
+                        <button className="text-violet11 hover:bg-mauve3 ml-2 shadow-blackA7 inline-flex items-center justify-center rounded-[4px] bg-white font-medium leading-none shadow-[0_2px_10px] outline-none">
+                          <GoDash
+                            onClick={() =>
+                              p.quantidade > 0
+                                ? updateP(
+                                    { quantidade: p.quantidade - 1 },
+                                    p.id
+                                  )
+                                : null
+                            }
+                            className="hover:scale-125 cursor-pointer"
+                          />
+                        </button>
+                      </div>
                     </div>
                     <div className="table-cell border-b border-slate-100 p-4 pl-8  text-slate-500">
                       {p.valor}

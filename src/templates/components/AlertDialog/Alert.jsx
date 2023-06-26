@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const Alert = (props) => (
   <AlertDialog.Root>
     <AlertDialog.Trigger asChild>
-      <button className="text-violet11 hover:bg-mauve3 shadow-blackA7 inline-flex p-1 items-center justify-center rounded-[4px] bg-white font-medium leading-none shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black">
+      <button className="text-violet11 hover:bg-mauve3 shadow-blackA7 inline-flex p-1 items-center justify-center rounded-[4px] bg-white font-medium leading-none shadow-[0_2px_10px] outline-none">
         <BsFillTrashFill
           // onClick={() => deleteP(p.id)}
           className="hover:scale-125 cursor-pointer"
