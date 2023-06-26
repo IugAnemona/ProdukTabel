@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "./Logo.jpg";
+import logo from "./Logo.png";
 import { FiMenu, FiX } from "react-icons/fi";
 
 export function Header() {
@@ -14,11 +14,11 @@ export function Header() {
         <div className="container flex items-center mx-auto">
           <div>
             <a
-              href="https://www.instagram.com/guianemona/"
+              href="https://github.com/IugAnemona/ProdukTabel"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img className=" w-14 rounded-full" src={logo} alt="" />
+              <img className=" w-32" src={logo} alt="" />
             </a>
           </div>
           <div className="flex-1 items-end  font-bold md:flex">
@@ -31,12 +31,22 @@ export function Header() {
                 }
               >
                 <li className="px-4 m-10 md:m-0">
-                  <a className="hover:text-slate-300 text-xl" href="#Home">
+                  <a
+                    className="hover:text-slate-300 text-xl"
+                    href="https://iugportfolio.netlify.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Sobre
                   </a>
                 </li>
                 <li className="px-4 m-10 md:m-0">
-                  <a className="hover:text-slate-300 text-xl" href="#projetos">
+                  <a
+                    className="hover:text-slate-300 text-xl"
+                    href="https://github.com/IugAnemona?tab=repositories"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Projetos
                   </a>
                 </li>

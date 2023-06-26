@@ -58,7 +58,10 @@ const ProductsTable = () => {
                 p.nome_produto.toLowerCase().includes(search.toLowerCase())
               )
               .map((p) => (
-                <div key={p.id} className="table-row-group bg-slate-50">
+                <div
+                  key={p.id}
+                  className="table-row-group bg-slate-50 font-light"
+                >
                   <div className="table-row">
                     <div className="table-cell border-b border-slate-100 p-4 pl-8  text-davysgray">
                       {p.nome_produto}

@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 
 const ProductForm = (props) => {
   const { setProducts } = useContext(TableContext);
-  const addNew = {};
+  let addNew = {};
 
   async function getNewTable() {
     const products = await getProducts();
@@ -40,7 +40,7 @@ const ProductForm = (props) => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed " />
-        <Dialog.Content className="text-slate-700 bg-powderblue rounded-md shadow-2xl fixed top-2/4 left-2/4 -translate-y-1/2 -translate-x-1/2 w-11/12 max-w-md max-h-[85vh] p-6">
+        <Dialog.Content className="text-slate-700 font-ubuntu font-light bg-powderblue rounded-md shadow-2xl fixed top-2/4 left-2/4 -translate-y-1/2 -translate-x-1/2 w-11/12 max-w-md max-h-[85vh] p-6">
           <Dialog.Title className="m-0 font-medium text-lg ">
             {props.type !== "edit" ? "Novo Produto" : "Editar Produto"}
           </Dialog.Title>
@@ -51,10 +51,12 @@ const ProductForm = (props) => {
           </Dialog.Description>
           <fieldset className="flex gap-5 items-center mb-4">
             <label className="text-base w-[90px] text-right" htmlFor="name">
-              Nome
+              Nome do produto
             </label>
             <input
-              onChange={(e) => (addNew.nome_produto = e.target.value)}
+              onChange={(e) => {
+                addNew = { ...addNew, nome_produto: e.target.value };
+              }}
               className="p-2 border-2 outline-0 border-border max-w-xl w-full flex-1 shadow-sm rounded-md text-base focus:border-focus focus:shadow-sm text-text"
               id="name"
             />
@@ -64,7 +66,9 @@ const ProductForm = (props) => {
               Quantidade
             </label>
             <input
-              onChange={(e) => (addNew.quantidade = Number(e.target.value))}
+              onChange={(e) => {
+                addNew = { ...addNew, quantidade: Number(e.target.value) };
+              }}
               className="p-2 border-2 outline-0 border-border max-w-xl w-full flex-1 shadow-sm rounded-md text-base focus:border-focus focus:shadow-sm text-text"
               id="quantity"
               type="Number"
@@ -75,12 +79,19 @@ const ProductForm = (props) => {
               Preço
             </label>
             <input
-              onChange={(e) => (addNew.valor = Number(e.target.value))}
+              onChange={(e) => {
+                addNew = { ...addNew, valor: Number(e.target.value) };
+              }}
               className="p-2 border-2 outline-0 border-border max-w-xl w-full flex-1 shadow-sm rounded-md text-base focus:border-focus focus:shadow-sm text-text"
               id="price"
               type="Number"
             />
           </fieldset>
+          {props.type !== "edit" ? (
+            <h1 className="w-full text-end text-red-500 font-medium">
+              Preencha todos os campos
+            </h1>
+          ) : null}
           <div
             style={{
               display: "flex",
