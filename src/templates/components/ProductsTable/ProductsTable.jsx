@@ -1,9 +1,11 @@
-import { BsFillTrashFill } from "react-icons/bs";
 import AddProduct from "../AddProduct/AddProduct";
 import { useContext, useEffect } from "react";
 import { TableContext } from "../contexts/TableContext";
-import { deleteProduct, getProducts } from "../../Api/products/";
+import { deleteProduct, getProducts, updateProduct } from "../../Api/products/";
 import { CgSpinner } from "react-icons/cg";
+
+import Alert from "../AlertDialog/Alert";
+import ProductForm from "../ProductForm/ProductForm";
 
 const ProductsTable = () => {
   const { search, products, setProducts } = useContext(TableContext);
@@ -15,6 +17,12 @@ const ProductsTable = () => {
 
   async function deleteP(id) {
     await deleteProduct(id);
+    const products = await getProducts();
+    setProducts(products);
+  }
+
+  async function updateP(data, id) {
+    await updateProduct(data, id);
     const products = await getProducts();
     setProducts(products);
   }
@@ -74,10 +82,8 @@ const ProductsTable = () => {
                       {p.valor}
                     </div>
                     <div className="table-cell border-b border-slate-100 p-4 pl-8  text-slate-500 text-lg">
-                      <BsFillTrashFill
-                        onClick={() => deleteP(p.id)}
-                        className="hover:scale-125 cursor-pointer"
-                      />
+                      <ProductForm type={"edit"} update={updateP} id={p.id} />
+                      <Alert delete={deleteP} id={p.id} />
                     </div>
                   </div>
                 </div>
