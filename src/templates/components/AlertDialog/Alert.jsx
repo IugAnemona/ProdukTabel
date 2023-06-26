@@ -25,7 +25,7 @@ const Alert = (props) => (
         <div className="flex justify-end gap-[25px]">
           <AlertDialog.Cancel asChild>
             <button className="text-mauve11 bg-mauve4 hover:bg-mauve5 focus:shadow-mauve7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
-              Cancel
+              Cancelar
             </button>
           </AlertDialog.Cancel>
           <AlertDialog.Action asChild>
@@ -33,7 +33,7 @@ const Alert = (props) => (
               onClick={() => props.delete(props.id)}
               className="text-red11 bg-red4 hover:bg-red5 focus:shadow-red7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]"
             >
-              Yes, delete account
+              Sim, Apagar Produto
             </button>
           </AlertDialog.Action>
         </div>
