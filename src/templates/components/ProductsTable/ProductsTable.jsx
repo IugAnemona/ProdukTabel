@@ -6,7 +6,7 @@ import { CgSpinner } from "react-icons/cg";
 import { GoDash, GoPlus } from "react-icons/go";
 
 import Alert from "../AlertDialog/Alert";
-import ProductForm from "../ProductForm/ProductForm";
+import ProductEdit from "../ProductForm/ProductEdit";
 
 const ProductsTable = () => {
   const { search, products, setProducts } = useContext(TableContext);
@@ -97,7 +97,7 @@ const ProductsTable = () => {
                       {p.valor}
                     </div>
                     <div className="table-cell border-b border-slate-100 p-4 pl-8  text-slate-500 text-lg">
-                      <ProductForm type={"edit"} update={updateP} id={p.id} />
+                      <ProductEdit type={"edit"} func={updateP} products={p} />
                       <Alert delete={deleteP} id={p.id} />
                     </div>
                   </div>
