@@ -94,6 +94,7 @@ const ProductEdit = (props) => {
                 Quantidade
               </label>
               <input
+                type="number"
                 defaultValue={props.products.quantidade}
                 name="quantidade"
                 {...register("quantidade")}
@@ -111,7 +112,7 @@ const ProductEdit = (props) => {
                 Preço
               </label>
               <input
-                // onChange={(e) => setValorInicial(e.target.value)}
+                type="number"
                 defaultValue={props.products.valor}
                 name="valor"
                 {...register("valor")}
