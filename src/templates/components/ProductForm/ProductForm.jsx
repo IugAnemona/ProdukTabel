@@ -30,7 +30,7 @@ const ProductForm = () => {
     addNew = {
       ...values,
       quantidade: Number(values.quantidade),
-      valor: Number(values.valor),
+      valor: parseFloat(values.valor),
     };
     postNewProduct();
     setOpen(false);

@@ -94,7 +94,7 @@ const ProductsTable = () => {
                       </div>
                     </div>
                     <div className="table-cell border-b border-slate-100 p-4 pl-8  text-slate-500">
-                      {p.valor}
+                      {parseFloat(p.valor).toFixed(2)}
                     </div>
                     <div className="table-cell border-b border-slate-100 p-4 pl-8  text-slate-500 text-lg">
                       <ProductEdit type={"edit"} func={updateP} products={p} />

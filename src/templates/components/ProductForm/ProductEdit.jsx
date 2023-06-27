@@ -31,7 +31,7 @@ const ProductEdit = (props) => {
     addNew = {
       ...values,
       quantidade: Number(values.quantidade),
-      valor: Number(values.valor),
+      valor: parseFloat(values.valor),
     };
     updateP(addNew, props.products.id);
     setOpen(false);
