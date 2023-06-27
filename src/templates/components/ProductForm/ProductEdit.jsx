@@ -69,9 +69,9 @@ const ProductEdit = (props) => {
             Edite o produto escolhido.
           </Dialog.Description>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <fieldset className="flex flex-wrap gap-5 items-center mb-4">
+            <fieldset className="flex flex-wrap gap-1 items-center mb-4">
               <label
-                className="text-base w-[90px] text-right"
+                className="text-base w-[90px] text-right mr-2"
                 htmlFor="nome_produto"
               >
                 Nome do produto
@@ -86,9 +86,9 @@ const ProductEdit = (props) => {
                 {errors.nome_produto?.message}
               </p>
             </fieldset>
-            <fieldset className="flex flex-wrap gap-5 items-center mb-4">
+            <fieldset className="flex flex-wrap gap-1 items-center mb-4">
               <label
-                className="text-base w-[90px] text-right"
+                className="text-base w-[90px] text-right mr-2"
                 htmlFor="quantidade"
               >
                 Quantidade
@@ -103,8 +103,11 @@ const ProductEdit = (props) => {
                 {errors.quantidade?.message}
               </p>
             </fieldset>
-            <fieldset className="flex flex-wrap gap-5 items-center mb-4">
-              <label className="text-base w-[90px] text-right" htmlFor="valor">
+            <fieldset className="flex flex-wrap gap-1 items-center mb-4">
+              <label
+                className="text-base w-[90px] text-right mr-2"
+                htmlFor="valor"
+              >
                 Preço
               </label>
               <input
