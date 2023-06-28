@@ -18,13 +18,13 @@ const ProductEdit = (props) => {
     quantidade: yup
       .number()
       .required("Quantidade é obrigatório")
-      .typeError("O valor precisa ser Numero")
+      .typeError("O valor precisa ser número")
       .positive()
       .integer(),
     valor: yup
       .number()
       .required("Preço é obrigatório")
-      .typeError("O valor precisa ser Numero")
+      .typeError("O valor precisa ser número")
       .positive(),
   });
 
@@ -119,7 +119,7 @@ const ProductEdit = (props) => {
               >
                 Preço
               </label>
-              <input
+              <inpunú
                 defaultValue={props.products.valor}
                 name="valor"
                 {...register("valor")}
