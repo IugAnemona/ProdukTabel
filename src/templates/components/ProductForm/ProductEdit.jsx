@@ -14,9 +14,18 @@ const ProductEdit = (props) => {
   const { setProducts } = useContext(TableContext);
 
   const validationYup = yup.object().shape({
-    nome_produto: yup.string().required("Nome do produto é obrigatorio"),
-    quantidade: yup.string().required("Quantidade é obrigatorio"),
-    valor: yup.string().required("Preço é obrigatório"),
+    nome_produto: yup.string().required("Nome do produto é obrigatório"),
+    quantidade: yup
+      .number()
+      .required("Quantidade é obrigatório")
+      .typeError("O valor precisa ser Numero")
+      .positive()
+      .integer(),
+    valor: yup
+      .number()
+      .required("Preço é obrigatório")
+      .typeError("O valor precisa ser Numero")
+      .positive(),
   });
 
   const {
@@ -31,7 +40,7 @@ const ProductEdit = (props) => {
     addNew = {
       ...values,
       quantidade: Number(values.quantidade),
-      valor: Number(values.valor),
+      valor: parseFloat(values.valor),
     };
     updateP(addNew, props.products.id);
     setOpen(false);
@@ -112,7 +121,6 @@ const ProductEdit = (props) => {
                 Preço
               </label>
               <input
-                type="number"
                 defaultValue={props.products.valor}
                 name="valor"
                 {...register("valor")}

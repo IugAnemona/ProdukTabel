@@ -14,9 +14,18 @@ const ProductForm = () => {
   const { setProducts } = useContext(TableContext);
 
   const validationYup = yup.object().shape({
-    nome_produto: yup.string().required("Nome do produto é obrigatorio"),
-    quantidade: yup.string().required("Quantidade é obrigatorio"),
-    valor: yup.string().required("Preço é obrigat1rio"),
+    nome_produto: yup.string().required("Nome do produto é obrigatório"),
+    quantidade: yup
+      .number()
+      .required("Quantidade é obrigatório")
+      .typeError("O valor precisa ser Numero")
+      .positive()
+      .integer(),
+    valor: yup
+      .number()
+      .required("Preço é obrigatório")
+      .typeError("O valor precisa ser Numero")
+      .positive(),
   });
   const {
     register,
@@ -30,7 +39,7 @@ const ProductForm = () => {
     addNew = {
       ...values,
       quantidade: Number(values.quantidade),
-      valor: Number(values.valor),
+      valor: parseFloat(values.valor),
     };
     postNewProduct();
     setOpen(false);
