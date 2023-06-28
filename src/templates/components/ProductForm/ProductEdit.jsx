@@ -103,7 +103,6 @@ const ProductEdit = (props) => {
                 Quantidade
               </label>
               <input
-                type="number"
                 defaultValue={props.products.quantidade}
                 name="quantidade"
                 {...register("quantidade")}
