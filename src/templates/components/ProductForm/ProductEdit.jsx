@@ -119,7 +119,7 @@ const ProductEdit = (props) => {
               >
                 Preço
               </label>
-              <inpunú
+              <input
                 defaultValue={props.products.valor}
                 name="valor"
                 {...register("valor")}
