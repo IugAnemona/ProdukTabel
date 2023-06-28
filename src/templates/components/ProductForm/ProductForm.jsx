@@ -99,6 +99,7 @@ const ProductForm = () => {
                 Quantidade
               </label>
               <input
+                type="number"
                 name="quantidade"
                 {...register("quantidade")}
                 className="p-2 border-2 outline-0 border-border max-w-xl w-full flex-1 shadow-sm rounded-md text-base focus:border-focus focus:shadow-sm text-text"
@@ -115,6 +116,7 @@ const ProductForm = () => {
                 Preço
               </label>
               <input
+                type="number"
                 name="valor"
                 {...register("valor")}
                 className="p-2 border-2 outline-0 border-border max-w-xl w-full flex-1 shadow-sm rounded-md text-base focus:border-focus focus:shadow-sm text-text"
